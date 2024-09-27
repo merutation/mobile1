@@ -1,50 +1,70 @@
-//Exercise 1
+open class Person(
+    var name: String,
+    var age: Int,
+    var email: String
+) {
+    open fun displayInfo() {
+        println("name: $name")
+        println("age: $age")
+        println("email: $email")
+    }
+}
 
-fun main(args: Array<String>) {
-    //1
-    val valInt: Int = 1
-    val valDouble: Double = 2.7
-    val valString: String = "word"
-    val valBoolean: Boolean = true
+class Employee(
+    name: String,
+    age: Int,
+    email: String,
+    var salary: Double
+) : Person(name, age, email) {
+    override fun displayInfo() {
+        super.displayInfo()
+        println("salary: $salary")
+    }
+}
+
+class BankAccount {
+    private var balance: Double = 0.0
+
+    fun deposit(amount: Double) {
+        if (amount > 0) {
+            balance += amount
+            println("deposit: $$amount")
+        } else {
+            println("deposit amount must be positive")
+        }
+    }
+
+    fun withdraw(amount: Double) {
+        if (amount > 0) {
+            if (balance >= amount) {
+                balance -= amount
+                println("withdrew: $$amount")
+            } else {
+                println("Not enough money")
+            }
+        } else {
+            println("withdrawal must be positive")
+        }
+    }
+
+    fun getBalance(): Double {
+        return balance
+    }
+}
+
+fun main() {
+    val person = Person("Meru", 20, "meru@gmail.com")
+    person.displayInfo()
     
-    println(valInt)
-    println(valDouble)
-    println(valString)
-    println(valBoolean)
-  
-    //2
-    if (valInt>0){
-      println("It is positive")
-    }
-    else if (valInt<0){
-      println("It is negative")
-    }
-    else {
-      println("It is 0")
-    }
+    println()
 
-    //3
-    println("for loop:")
-    for (i in 1..10) {
-        println(i)
-    }
+    val employee = Employee("Ansar", 21, "ansar@gmail.com", 10000.0)
+    employee.displayInfo()
+    
+    println()
 
-    println("\n while loop:")
-    var j = 1
-    while (j <= 10) {
-        println(j)
-        j++
-    }
-
-    //4
-    val numbers = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-
-    var sum = 0
-
-    for (number in numbers) {
-        sum += number
-    }
-
-    println("sum is: $sum")
-
+    val bankAccount = BankAccount()
+    bankAccount.deposit(500.0)
+    bankAccount.withdraw(200.0)
+    println("Current Balance: $${bankAccount.getBalance()}")
 }
