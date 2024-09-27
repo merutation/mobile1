@@ -1,3 +1,5 @@
+Exercise 1,2, 3 are in Main.kt
+
 ![image](https://github.com/user-attachments/assets/cd51446e-3b60-4a15-81fe-82948f76643b)
 
 ![image](https://github.com/user-attachments/assets/b16ba8f7-e25d-4283-a062-a0944fe3a620)
